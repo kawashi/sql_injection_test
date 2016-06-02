@@ -55,21 +55,7 @@
            <?php if($_GET["flag"] == "success"){
                 echo '<div class="bg-success text-success success-message"><p>Success, Please Login!</p></div>';
             } ?>
-            <div class="signin col-md-6">
-                <h1>Login Form.</h1>
-                <form action="index.php" method="post" >
-                   <div>
-                        <input type="text" name="name" class="form-control" placeholder="username"/>
-                    </div>
-                    <div>
-                        <input type="password" name="pass" class="form-control" placeholder="password"/>
-                    </div>
-                    <div>
-                        <input type="submit" class="btn btn-default btn-block" value="signin" name="signin">
-                    </div>
-                </form>
-            </div>
-            <div class="signup col-md-6">
+            <div class="signup col-md-8">
                 <h1>Create Account.</h1>
                 <form action="index.php" method="post">
                     <div>
@@ -80,6 +66,20 @@
                     </div>
                     <div>
                         <input type="submit" class="btn btn-primary btn-block" name="signup" value="signup">
+                    </div>
+                </form>
+            </div> 
+            <div class="signin col-md-4">
+                <h1>Login Form.</h1>
+                <form action="index.php" method="post" >
+                   <div>
+                        <input type="text" name="name" class="form-control" placeholder="username"/>
+                    </div>
+                    <div>
+                        <input type="password" name="pass" class="form-control" placeholder="password"/>
+                    </div>
+                    <div>
+                        <input type="submit" class="btn btn-default btn-block" value="signin" name="signin">
                     </div>
                 </form>
             </div> 

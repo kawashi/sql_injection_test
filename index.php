@@ -14,18 +14,17 @@
         if(!mysql_select_db('u554433119_fjb', $link)) exit(mysql_error()."選択できてないやつ"); 
         
         // SQL発行
-        $query  = "SELECT * FROM users WHERE name = '".$_POST['name']."'";
+        $query  = "SELECT * FROM users WHERE name = '".$_POST['name']."' AND pass = '". $_POST['pass'] ."'";
         echo '<script>alert("'.$query.'");</script>';
         $result = mysql_query($query);
         if(!$result) exit(mysql_error()."クエリ失敗奴");
         
         // 結果照合
         while( $row = mysql_fetch_array($result) ){
-            if( $_POST["pass"] == $row["pass"] ){
-                setcookie('login', 'true', time() + 3600);
-                header("Location: show.php");
-                exit;
-            }
+            setcookie('login', 'true', time() + 3600);
+            setcookie('name', $_POST['name'], time() + 3600);
+            header("Location: show.php");
+            exit;
         }
     }
     /* サインアップ */

@@ -6,11 +6,17 @@ header{
     height: 80px;
     background-color: #454545;
     color: #fff;
+    z-index: 9999;
 }
 
+.success-message{
+    height: 40px;
+    font-size: 25px;
+    margin-bottom: 40px;
+}
 
 .main{
-    margin-top: 200px;
+    margin-top: 140px;
 }
 
 .main h1{
@@ -19,6 +25,11 @@ header{
 
 input{
     margin-bottom: 50px;
+}
+
+.signin{
+    height: 400px;
+    border-right: 2px solid #e6e6e6;
 }
 
 .message{

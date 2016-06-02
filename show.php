@@ -29,6 +29,12 @@
                 <input type="submit" name="logout" value="Logout" class="btn btn-default">
             </form>
         </div>
+        
+        <!-- 簡易的な投稿ができるようにする -->
+        <div class="messages">
+           <div class="post-form"></div>
+           <div class="message-list"></div>            
+        </div>
     </div>
     
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

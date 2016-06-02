@@ -20,11 +20,14 @@
         if(!$result) exit(mysql_error()."クエリ失敗奴");
         
         // 結果照合
-        while( $row = mysql_fetch_array($result) ){
+        // while( $row = mysql_fetch_array($result) ){
+        if(mysql_num_rows($result) > 0){
             setcookie('login', 'true', time() + 3600);
             setcookie('name', $_POST['name'], time() + 3600);
             header("Location: show.php");
             exit;
+        }else{
+            header("Location: index.php?flag=danger&message=miss")
         }
     }
     /* サインアップ */
@@ -57,7 +60,7 @@
         
         // SQL発行
         $query  = "INSERT INTO users VALUES(null, '". $_POST["name"] ."', '". $_POST["pass"] ."')";
-        echo '<script>alert("'.$query.'");</script>';
+        // echo '<script>alert("'.$query.'");</script>';
         $result = mysql_query($query);
         if(!$result){
             exit(mysql_error()."クエリ失敗奴");
@@ -85,18 +88,21 @@
             <?php 
             if(isset($_GET["flag"])){
                 if($_GET["flag"] == "success"){
-                    echo '<div class="bg-success text-success success-message"><p>Success, Please Login!</p></div>';
+                    echo '<div class="bg-success text-success success-message"><p>Success, Please login!</p></div>';
                 }
                 if($_GET["flag"] == "danger"){
                     if($_GET["message"] == "require"){
-                        echo '<div class="bg-danger text-danger danger-message"><p>Not space for Name or Pass!</p></div>';
+                        echo '<div class="bg-danger text-danger danger-message"><p>Not space for name or pass!</p></div>';
                     }
                     if($_GET["message"] == "max"){
                         echo '<div class="bg-danger text-danger danger-message"><p>No!　1ジカン　デ　3ツマデ!</p></div>';
                     }
                     if($_GET["message"] == "overlap"){
                         echo '<div class="bg-danger text-danger danger-message"><p>No! Please another name.</p></div>';
-                    }          
+                    }
+                    if($_GET["message"] == "miss"){
+                        echo '<div class="bg-danger text-danger danger-message"><p>This user or pass not found.</p></div>';
+                    }
                 }
             } ?>
             <div class="signup col-md-8">

@@ -9,7 +9,7 @@ header{
     z-index: 9999;
 }
 
-.success-message{
+.success-message,.danger-message{
     height: 40px;
     font-size: 25px;
     margin-bottom: 40px;

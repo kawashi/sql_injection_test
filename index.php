@@ -27,7 +27,7 @@
             header("Location: show.php");
             exit;
         }else{
-            header("Location: index.php?flag=danger&message=miss")
+            header("Location: index.php?flag=danger&message=miss");
         }
     }
     /* サインアップ */

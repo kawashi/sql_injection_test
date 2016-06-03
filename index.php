@@ -9,9 +9,16 @@
     /* サインイン */
     if( isset($_POST['signin']) ){    
         // DB接続・選択 TODO:要リファクタ
-        $link = mysql_connect('mysql.hostinger.jp', 'u554433119_fjb', 'password');
+        
+        // Hostinger
+        // $link = mysql_connect('mysql.hostinger.jp', 'u554433119_fjb', 'password');
+        // if(!$link) exit(mysql_error()."コネクトできてないやつ");
+        // if(!mysql_select_db('u554433119_fjb', $link)) exit(mysql_error()."選択できてないやつ"); 
+        
+        // Xサーバ
+        $link = mysql_connect('mysql1406.xserver.jp', 'yakimeron_fjb', 'password');
         if(!$link) exit(mysql_error()."コネクトできてないやつ");
-        if(!mysql_select_db('u554433119_fjb', $link)) exit(mysql_error()."選択できてないやつ"); 
+        if(!mysql_select_db('yakimeron_fjb', $link)) exit(mysql_error()."選択できてないやつ"); 
         
         // SQL発行
         $query  = "SELECT * FROM users WHERE name = '".$_POST['name']."' AND pass = '". $_POST['pass'] ."'";
@@ -34,9 +41,15 @@
     if( isset($_POST['signup']) ){
         
         // DB接続・選択 TODO:要リファクタ
-        $link = mysql_connect('mysql.hostinger.jp', 'u554433119_fjb', 'password');
+        // Hostinger
+        // $link = mysql_connect('mysql.hostinger.jp', 'u554433119_fjb', 'password');
+        // if(!$link) exit(mysql_error()."コネクトできてないやつ");
+        // if(!mysql_select_db('u554433119_fjb', $link)) exit(mysql_error()."選択できてないやつ"); 
+        
+        // Xサーバ
+        $link = mysql_connect('mysql1406.xserver.jp', 'yakimeron_fjb', 'password');
         if(!$link) exit(mysql_error()."コネクトできてないやつ");
-        if(!mysql_select_db('u554433119_fjb', $link)) exit(mysql_error()."選択できてないやつ"); 
+        if(!mysql_select_db('yakimeron_fjb', $link)) exit(mysql_error()."選択できてないやつ");  
         
         // バリデーションチェック
         // 空白チェック
@@ -46,7 +59,7 @@
         }
         // 新規作成は1時間に3つまで
         if( isset($_COOKIE["create_count"]) ){
-            if( $_COOKIE["create_count"] > 3 ){
+            if( $_COOKIE["create_count"] >= 10){
                 header("Location: index.php?flag=danger&message=max");
                 exit;
             }
@@ -95,7 +108,7 @@
                         echo '<div class="bg-danger text-danger danger-message"><p>Not space for name or pass!</p></div>';
                     }
                     if($_GET["message"] == "max"){
-                        echo '<div class="bg-danger text-danger danger-message"><p>No!　1ジカン　デ　3ツマデ!</p></div>';
+                        echo '<div class="bg-danger text-danger danger-message"><p>No!　1ジカン　デ　10コマデ!</p></div>';
                     }
                     if($_GET["message"] == "overlap"){
                         echo '<div class="bg-danger text-danger danger-message"><p>No! Please another name.</p></div>';
